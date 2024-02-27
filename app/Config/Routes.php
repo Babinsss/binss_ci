@@ -7,3 +7,4 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/user/add', 'UserController::addUser');
+$routes->post('/user/add', 'UserController::addUser');
