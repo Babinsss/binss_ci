@@ -3,7 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\GenderModel;
+use App\Models\UserModel;
 
 class UserController extends BaseController
 {
@@ -40,8 +41,27 @@ class UserController extends BaseController
                 $data['validation'] = $this->validator;
             } else {
                 // Form is valid, save the user...
+                $userModel = new UserModel();
+
+                $userData = [
+                    'first_name' => $post['first_name'],
+                    'middle_name' => $post['middle_name'],
+                    'last_name' => $post['last_name'],
+                    'age' => $post['age'],
+                    'gender_id' => $post['gender_id'],
+                    'email' => $post['email'],
+                    'password' => password_hash($post['password'], PASSWORD_DEFAULT) // Encrypt password
+                ];
+
+                $userModel->insert($userData);
+
+                // Optionally, you can redirect the user to a success page or display a success message here.
             }
         }
+
+        //Fetch all Values
+        $genderModel = new GenderModel();
+        $genders = $genderModel->fetchAll();
 
         return view('user/add', $data);
     }

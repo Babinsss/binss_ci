@@ -8,7 +8,7 @@
             <div class="card mt-3">
                 <div class="card-body">
                     <h5 class="card-title text-center">Add User</h5>
-                    <form action="#" method="post">
+                    <form action="<?= base_url('/storeUser') ?>" method="post">
                         <?= csrf_field() ?>
                         <div class="mb-3">
                             <label for="first_name" class="form-label">First Name</label>
