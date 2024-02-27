@@ -59,9 +59,9 @@ class UserController extends BaseController
             }
         }
 
-        //Fetch all Values
+        //Find all Values
         $genderModel = new GenderModel();
-        $genders = $genderModel->fetchAll();
+        $genders = $genderModel->findAll();
 
         return view('user/add', $data);
     }
